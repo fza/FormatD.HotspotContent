@@ -1,0 +1,19 @@
+{
+  "name": "formatd-hotspot-content",
+  "description": "Self-contained frontend bundle for FormatD.HotspotContent",
+  "license": "MIT",
+  "private": true,
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "build": "NODE_ENV=production npm run build:js && npm run build:css",
+    "build:js": "node esbuild.js",
+    "build:css": "sass --no-source-map --style=compressed --quiet-deps --silence-deprecation=import src/styles.scss ../../../Public/HotspotContent/Main.css",
+    "watch": "node esbuild.js --watch"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.1",
+    "sass": "^1.77.0"
+  }
+}

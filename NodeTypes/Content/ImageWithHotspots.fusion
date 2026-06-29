@@ -2,18 +2,7 @@ prototype(FormatD.HotspotContent:Content.ImageWithHotspots) < prototype(Neos.Neo
 
 	renderer = FormatD.HotspotContent:Molecule.ContentWithHotspots {
 		content = FormatD.HotspotContent:Content.Image
-		hotspots = Neos.Neos:ContentCollection {
-			nodePath = 'hotspots'
-            @process.addLayers = Neos.Fusion:Join {
-                value = ${value}
-                hotspots = Neos.Neos:ContentCollection {
-                    nodePath = 'hotspots'
-                    content.itemRenderer = FormatD.HotspotContent:Component.HotspotLayer
-					attributes.class.@process.collectionClass = "hotspot-with-layer--collection"
-                    @if.hasLayerHotspots = ${q(node).find('[instanceof FormatD.HotspotContent:Content.HotspotWithLayer]').count() > 0}
-                }
-            }
-		}
+		hotspots = Neos.Neos:ContentCollectionRenderer
 	}
 
 }

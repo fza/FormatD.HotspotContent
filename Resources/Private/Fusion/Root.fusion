@@ -1,5 +1,2 @@
-##
-# Include all .fusion files
-#
 include: **/*.fusion
 include: nodetypes://FormatD.HotspotContent/**/*.fusion

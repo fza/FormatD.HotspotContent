@@ -1,0 +1,23 @@
+prototype(Neos.Neos:Page) {
+	head {
+		hotspotContentStyles = Neos.Fusion:Tag {
+			@if.enabled = ${Configuration.setting('FormatD.HotspotContent.includeCSS')}
+			tagName = 'link'
+			selfClosingTag = true
+			attributes.rel = 'stylesheet'
+			attributes.href = Neos.Fusion:ResourceUri {
+				path = 'resource://FormatD.HotspotContent/Public/HotspotContent/Main.css'
+			}
+		}
+
+		hotspotContentScript = Neos.Fusion:Tag {
+			@if.enabled = ${Configuration.setting('FormatD.HotspotContent.includeJS')}
+			tagName = 'script'
+			content = ''
+			attributes.defer = true
+			attributes.src = Neos.Fusion:ResourceUri {
+				path = 'resource://FormatD.HotspotContent/Public/HotspotContent/Main.js'
+			}
+		}
+	}
+}

@@ -1,9 +1,2 @@
 prototype(FormatD.HotspotContent:Molecule.ContentWithHotspots) < prototype(FormatD.HotspotEditor:Molecule.ContentWithHotspots) {
-
-	renderer.@process.augmentWithComponentRegistration {
-		expression = FormatD.ComponentLoader:Meta.Processor.Component {
-			fusionObjectName = "FormatD.HotspotContent:Molecule.ContentWithHotspots"
-		}
-		@position = 'end'
-	}
 }

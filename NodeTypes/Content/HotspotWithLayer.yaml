@@ -1,4 +1,3 @@
-
 'FormatD.HotspotContent:Content.HotspotWithLayer':
   superTypes:
     'FormatD.HotspotEditor:Content.Hotspot': true
@@ -16,4 +15,7 @@
         document:
           label: i18n
   properties:
-    link: []
+    link:
+      ui:
+        inspector:
+          group: ~

@@ -1,49 +1,15 @@
 {
-  "name": "formatd/hotspot-content",
-  "description": "Hotspot Content Element for Neos CMS",
-  "type": "neos-package",
-  "license": "MIT",
-  "require": {
-    "formatd/hotspot-editor": "~2.0.0",
-    "formatd/componentloader": "~1.0.2",
-    "neos/nodetypes-basemixins": "*"
-  },
-  "autoload": {
-    "psr-4": {
-      "FormatD\\HotspotContent\\": "Classes/"
-    }
-  },
-  "extra": {
-    "neos": {
-      "package-key": "FormatD.HotspotContent"
+    "name": "formatd/hotspot-content",
+    "description": "Hotspot Content Element for Neos CMS",
+    "type": "neos-package",
+    "license": "MIT",
+    "require": {
+        "formatd/hotspot-editor": "@dev",
+        "neos/nodetypes-basemixins": "~9.0"
     },
-    "composer-exit-on-patch-failure": true,
-    "applied-flow-migrations": [
-      "TYPO3.Form-20160601101500",
-      "Neos.Twitter.Bootstrap-20161124204912",
-      "Neos.Form-20161124205254",
-      "Neos.Party-20161124225257",
-      "Neos.Kickstart-20161124230102",
-      "Neos.Setup-20161124230842",
-      "Neos.Imagine-20161124231742",
-      "Neos.Setup-20161125014759",
-      "Neos.Kickstarter-20161125110814",
-      "Neos.SwiftMailer-20161130105617",
-      "Neos.ContentRepository.Search-20161210231100",
-      "Neos.Seo-20170127154600",
-      "Neos.Flow-20180415105700",
-      "Neos.Neos-20180907103800",
-      "Neos.Neos.Ui-20190319094900",
-      "Neos.Flow-20190425144900",
-      "Neos.Flow-20190515215000",
-      "Neos.Flow-20200813181400",
-      "Neos.Flow-20201003165200",
-      "Neos.Flow-20201109224100",
-      "Neos.Flow-20201205172733",
-      "Neos.Flow-20201207104500",
-      "Neos.Neos-20220318111600",
-      "Neos.Flow-20220318174300",
-      "Neos.Fusion-20220326120900"
-    ]
-  }
+    "extra": {
+        "neos": {
+            "package-key": "FormatD.HotspotContent"
+        }
+    }
 }
