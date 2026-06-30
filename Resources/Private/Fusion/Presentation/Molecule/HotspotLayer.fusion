@@ -1,0 +1,33 @@
+prototype(FormatD.HotspotContent:Molecule.HotspotLayer) < prototype(Neos.Fusion:Component) {
+
+    @propTypes {
+        @strict = false
+        identifier = ${PropTypes.string}
+        layerContent = ${PropTypes.string}
+        layerCloseIcon = ${PropTypes.string}
+    }
+
+    identifier = ''
+    layerContent = ''
+    layerCloseIcon = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 17l5-5m0 0l5-5m-5 5l5 5m-5-5L7 7" stroke="#000000"/></svg>'
+
+    renderer = afx`
+        <div class.hotspotLayer="hotspot-with-layer--layer"
+             data-hotspot-id={props.identifier}
+             tabindex="-1"
+             aria-modal="true"
+             role="dialog"
+             @key="hotspotLayer"
+        >
+            {props.layerContent}
+            <button class.hotspotLayerClose="hotspot-with-layer--layer-close"
+                    type="button"
+                    aria-label="Close Hotspot Layer"
+                    @key="hotspotLayerClose"
+            >
+                {props.layerCloseIcon}
+            </button>
+        </div>
+    `
+
+}
