@@ -1,12 +1,6 @@
 'FormatD.HotspotContent:Content.HotspotWithLayer':
   superTypes:
     'FormatD.HotspotEditor:Content.Hotspot': true
-  childNodes:
-    main:
-      type: 'Neos.Neos:ContentCollection'
-      constraints:
-        nodeTypes:
-          'FormatD.HotspotContent:Content.ImageWithHotspots': false
   ui:
     group: 'general'
     label: i18n

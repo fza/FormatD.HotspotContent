@@ -84,6 +84,38 @@ This package is based on `formatd/hotspot-editor`
 Instead of using this package directly, it can also make sense to use it as an example of how to
 build your own hotspot elements in Neos.
 
+### Customizing `ContentWithHotspots` via subclass
+
+Subclass `ContentWithHotspots` to keep project-specific behavior out of this package.
+
+Protected extension points:
+
+| Method | Default | Override to… |
+|---|---|---|
+| `createPortalWrapper()` | `<div class="content-with-hotspots hotspot-layer-portal">` | Customize the portal container element |
+| `onLayerDidOpen(layer, hotspot, container)` | noop | React after a layer becomes visible |
+| `onBeforeLayerHidden(layer, finish)` | calls `finish()` immediately | Delay hide until an animation completes — call `finish()` when done |
+| `onLayerDidClose(layer, hotspot, container)` | noop | React after a layer is fully hidden |
+
+Also accessible to subclasses: `isBackend`, `getLayer()`, `closeOtherShowroomHotspots()`, `hotspotsMap`.
+
+#### Example
+
+```typescript
+import ContentWithHotspots from './path/to/ContentWithHotspots';
+
+class MyContentWithHotspots extends ContentWithHotspots {
+    protected onBeforeLayerHidden(layer: HTMLElement, finish: () => void): void {
+        layer.addEventListener('transitionend', finish, { once: true });
+    }
+}
+
+const controller = new MyContentWithHotspots();
+document.querySelectorAll<HTMLElement>('.content-with-hotspots').forEach((section) => {
+    controller.initialize(section);
+});
+```
+
 
 ## Contribution
 
@@ -92,7 +124,11 @@ Please maintain a clean and consistent coding style.
 To rebuild the assets (Node >= 24), run:
 
 ```bash
-cd Resources/Private/Scripts/HotspotContentFrontend && npm install && npm run build
+cd Resources/Private/Scripts/HotspotContentFrontend
+npm install
+npm run build
+# or:
+npm run watch
 ```
 
 

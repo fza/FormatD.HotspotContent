@@ -2,7 +2,10 @@ prototype(FormatD.HotspotContent:Content.ImageWithHotspots) < prototype(Neos.Neo
 
 	renderer = FormatD.HotspotContent:Molecule.ContentWithHotspots {
 		content = FormatD.HotspotContent:Content.Image
-		hotspots = Neos.Neos:ContentCollectionRenderer
+		hotspots = Neos.Neos:ContentCollection {
+			nodePath = 'hotspots'
+		}
+		hotspotNodeTypes = ${Array.filter(Array.unique(Array.map(q(node).children('[instanceof Neos.Neos:ContentCollection]').children('[instanceof FormatD.HotspotEditor:Content.Hotspot]').get(), child => child.nodeTypeName.value)), typeName => typeName != 'FormatD.HotspotEditor:Content.Hotspot')}
 	}
 
 }

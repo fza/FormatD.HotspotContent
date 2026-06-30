@@ -4,12 +4,11 @@ prototype(FormatD.HotspotContent:Component.HotspotLayer) < prototype(Neos.Fusion
         nodePath = 'main'
     }
 
-    hotspotIdentifier = ${String.md5(q(node).property('_identifier'))}
 	layerCloseIcon = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 17l5-5m0 0l5-5m-5 5l5 5m-5-5L7 7" stroke="#000000"/></svg>'
 
     renderer = afx`
         <div class.hotspotLayer="hotspot-with-layer--layer"
-			 data-hotspot-id={props.hotspotIdentifier}
+			 data-hotspot-id={node.aggregateId}
 			 tabindex="-1"
 			 aria-modal="true"
 			 role="dialog"

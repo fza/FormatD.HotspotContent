@@ -1,11 +1,15 @@
 'FormatD.HotspotContent:Content.ImageWithHotspots':
   superTypes:
     'FormatD.HotspotContent:Content.Image': true
-  constraints:
-    nodeTypes:
-      '*': false
-      'FormatD.HotspotEditor:Content.Hotspot': true
-      'FormatD.HotspotEditor:Content.HotspotWithLayer': true
+    'FormatD.HotspotEditor:Mixin.HotspotCollection': true
+  childNodes:
+    hotspots:
+      type: 'Neos.Neos:ContentCollection'
+      constraints:
+        nodeTypes:
+          '*': false
+          'FormatD.HotspotEditor:Content.Hotspot': true
+          'FormatD.HotspotContent:Content.HotspotWithLayer': true
   ui:
     label: i18n
     group: 'general'

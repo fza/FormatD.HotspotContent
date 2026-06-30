@@ -3,18 +3,23 @@
 
 ## 3.0.0
 
-Neos 9 compatibility, self-contained package. **Breaking.**
+Neos 9 compatibility. **Breaking.**
 
-- Dropped the dependency on `formatd/componentloader`: removed `ContentWithHotspotsComponentManager`
-  and the ComponentLoader Fusion registration; the controller detects the backend on its own.
-- Ships pre-built assets (`Resources/Public/HotspotContent/Main.js` / `Main.css`), auto-included by
-  default via the `FormatD.HotspotContent.includeJS` / `includeCSS` settings.
+- Dropped the dependency on `formatd/componentloader`: removed ComponentLoader Fusion registration
 - Fixed: `HotspotWithLayer` layer dialog now actually renders (was dead code) — emits extra DOM.
 - Fixed: `HotspotWithLayer` `link` property is correctly hidden.
+- Restructured the typescript and scss files
+- Keyboard accessibility: Escape closes open layer; Tab is trapped inside open layer
+- Layer lifecycle extension points: `ContentWithHotspots` exposes overrideable `onBeforeLayerShown()`, `onLayerDidOpen()`, `onBeforeLayerHidden()`, `onLayerDidClose()` for subclasses
+- Layer portal rendering: layers are moved off-DOM into a portal wrapper for correct z-index stacking
+- German translations added for both node types
+- `ImageWithHotspots` node type now extends `FormatD.HotspotEditor:Mixin.HotspotCollection`
+
+**Breaking changes:**
+
+- CSS custom properties renamed: all variables are now prefixed with `--hotspot-layer-` — update any custom CSS targeting old variable names
+- Layer visibility now uses the `[hidden]` attribute instead of CSS animations — custom CSS targeting animation states or `display`-based selectors must be adapted
 
 **Upgrade:**
 
-- Standalone: nothing to do, assets auto-load.
-- Own bundling / ComponentLoader: set `includeJS` / `includeCSS` to `false`, wrap the exported
-  `ContentWithHotspots` controller in your own manager, and re-attach the registration processor in
-  your Fusion (see README).
+- Please verify that custom styling still works.

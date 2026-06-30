@@ -1,3 +1,5 @@
+import '../../../Fusion/Root.scss';
+
 import ContentWithHotspots from '../../../Fusion/Presentation/Molecule/ContentWithHotspots';
 
 function isNeosBackend(): boolean {

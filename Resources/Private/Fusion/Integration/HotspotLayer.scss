@@ -1,9 +1,9 @@
 * {
-  --layer-bg-color: #ffffff;
-  --layer-box-shadow-mobile: 0 0 3.125rem 3.125rem rgba(0,0,0,0.4);
-  --layer-box-shadow-desktop: 0 0.75rem 1.625rem 0 rgba(62, 69, 91, 0.15);
-  --layer-max-width-lg: 46.25rem;
-  --layer-max-width-xl: 52.5rem;
+  --hotspot-layer-bg-color: #ffffff;
+  --hotspot-layer-box-shadow-mobile: 0 0 3.125rem 3.125rem rgba(0,0,0,0.4);
+  --hotspot-layer-box-shadow-desktop: 0 0.75rem 1.625rem 0 rgba(62, 69, 91, 0.15);
+  --hotspot-layer-max-width-lg: 46.25rem;
+  --hotspot-layer-max-width-xl: 52.5rem;
 }
 
 .hotspot-with-layer {
@@ -18,12 +18,11 @@
   	position: fixed;
   	inset: 1.25rem;
   	z-index: 500;
-	width: calc(100vw - 2.5rem);
   	min-width: 20rem;
 	height: calc(100vh - 2.5rem);
   	padding: 1.25rem;
-	box-shadow: var(--layer-box-shadow-mobile);
-	background-color: var(--layer-bg-color);
+	box-shadow: var(--hotspot-layer-box-shadow-mobile);
+	background-color: var(--hotspot-layer-bg-color);
   	overflow-y: scroll;
   	display: none;
   	opacity: 0;
@@ -31,20 +30,19 @@
 	@media (min-width: 1024px) {
 		position: relative;
 	  	width: 100%;
-	  	max-width: var(--layer-max-width-lg);
+	  	max-width: var(--hotspot-layer-max-width-lg);
 	  	height: auto;
 	  	max-height: calc(100% - 2.5rem);
 	  	padding: 2.5rem;
-	  	box-shadow: var(--layer-box-shadow-desktop);
+	  	box-shadow: var(--hotspot-layer-box-shadow-desktop);
 	}
 
 	@media (min-width: 1280px) {
-	  	max-width: var(--layer-max-width-xl);
+	  	max-width: var(--hotspot-layer-max-width-xl);
 	}
 
-	&.js--active {
+	&:not([hidden]) {
 		display: block;
-		animation: fadeIn 0.5s 0.1s forwards ease-in-out;
 	}
 
 }
@@ -56,12 +54,20 @@
 	cursor: pointer;
 }
 
-
-@keyframes fadeIn {
-  0% {
-	opacity: 0;
-  }
-  100% {
-	opacity: 1;
-  }
+.neos-backend .hotspot-with-layer--layer:not(.layer-open) {
+	display: block !important;
+	position: fixed !important;
+	top: -9999px !important;
+	left: -9999px !important;
+	visibility: hidden !important;
+	pointer-events: none !important;
 }
+
+.neos-backend .content-with-hotspots [class*="markActiveNodeAsFocused"]:has(.hotspot-with-layer--layer):not(:has(.layer-open)) {
+	outline: none !important;
+}
+
+body:has(.content-with-hotspots.has-selected-pin) [data-__neos__inline-ui="TRUE"] {
+	display: none !important;
+}
+

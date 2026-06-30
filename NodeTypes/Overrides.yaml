@@ -1,0 +1,11 @@
+'Neos.Neos:ContentCollection':
+  constraints:
+    nodeTypes:
+      'FormatD.HotspotContent:Content.HotspotWithLayer': false
+
+'FormatD.HotspotEditor:Mixin.HotspotCollection':
+  childNodes:
+    hotspots:
+      constraints:
+        nodeTypes:
+          'FormatD.HotspotContent:Content.HotspotWithLayer': true
