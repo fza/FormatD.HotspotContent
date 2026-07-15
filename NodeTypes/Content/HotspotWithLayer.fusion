@@ -1,7 +1,9 @@
 prototype(FormatD.HotspotContent:Content.HotspotWithLayer) < prototype(FormatD.HotspotEditor:Content.Hotspot) {
 
-	renderer.renderer.attributes.class.hotspotWithLayer = 'hotspot-with-layer'
-	renderer.renderer.content.@process.addBackendNotice = ${(renderingMode.isEdit || renderingMode.isPreview) ? value + '<div class="hotspot--backend-notice">Right-Click to open layer</div>' : value}
+	renderer.renderer {
+		attributes.class.hotspotWithLayer = 'hotspot-with-layer'
+		content.@process.addBackendNotice = ${(renderingMode.isEdit || renderingMode.isPreview) ? value + '<div class="hotspot--backend-notice">Right-Click to open layer</div>' : value}
+	}
 
 	renderer.@process.appendLayer {
 		expression = Neos.Fusion:Join {
