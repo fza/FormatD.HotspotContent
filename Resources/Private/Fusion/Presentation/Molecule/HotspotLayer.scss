@@ -55,19 +55,19 @@
 }
 
 .neos-backend .hotspot-with-layer--layer:not(.layer-open) {
-	display: block !important;
-	position: fixed !important;
-	top: -9999px !important;
-	left: -9999px !important;
-	visibility: hidden !important;
-	pointer-events: none !important;
+	display: block;
+	position: fixed;
+	top: -9999px;
+	left: -9999px;
+	visibility: hidden;
+	pointer-events: none;
 }
 
 .neos-backend .content-with-hotspots [class*="markActiveNodeAsFocused"]:has(.hotspot-with-layer--layer):not(:has(.layer-open)) {
-	outline: none !important;
+	outline: none;
 }
 
 body:has(.content-with-hotspots.has-selected-pin) [data-__neos__inline-ui="TRUE"] {
-	display: none !important;
+	display: none;
 }
 

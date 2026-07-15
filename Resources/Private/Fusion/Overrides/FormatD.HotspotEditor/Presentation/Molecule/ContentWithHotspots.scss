@@ -16,9 +16,7 @@
 }
 
 .content-with-hotspots--container {
-	display: flex;
-	align-items: center;
-	justify-content: center;
+	display: block;
 
 	&:hover {
 		&:after {
